@@ -1,0 +1,24 @@
+<PAMDataset>
+  <Metadata domain="IMAGE_STRUCTURE">
+    <MDI key="COMPRESSION">JPEG</MDI>
+    <MDI key="INTERLEAVE">PIXEL</MDI>
+    <MDI key="SOURCE_COLOR_SPACE">YCbCr</MDI>
+  </Metadata>
+  <GCPList Projection="PROJCS[&quot;WGS 84 / World Mercator&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Mercator_1SP&quot;],PARAMETER[&quot;central_meridian&quot;,0],PARAMETER[&quot;scale_factor&quot;,1],PARAMETER[&quot;false_easting&quot;,0],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;3395&quot;]]" dataAxisToSRSAxisMapping="1,2">
+    <GCP Id="" Pixel="-769915.1536" Line="0.0000" X="1.548010747412E+02" Y="7.571474897916E+02" Z="1.198202364947E+07" />
+    <GCP Id="" Pixel="-769915.1536" Line="0.0000" X="8.743604806818E+02" Y="7.576612161642E+02" Z="1.198202766947E+07" />
+    <GCP Id="" Pixel="-769925.1536" Line="0.0000" X="6.347927489086E+02" Y="4.822182593685E+02" Z="1.198202786947E+07" />
+    <GCP Id="" Pixel="-769925.1536" Line="0.0000" X="4.110649136251E+02" Y="4.822610698996E+02" Z="1.198202364947E+07" />
+    <GCP Id="" Pixel="-769914.1536" Line="0.0000" X="2.195857335734E+02" Y="6.872802655266E+02" Z="1.198202364947E+07" />
+    <GCP Id="" Pixel="-769913.1536" Line="0.0000" X="2.651361386139E+02" Y="6.323115436544E+02" Z="1.198202364947E+07" />
+    <GCP Id="" Pixel="-769912.1536" Line="0.0000" X="3.072617011701E+02" Y="5.924121287129E+02" Z="1.198202364947E+07" />
+    <GCP Id="" Pixel="-769914.1536" Line="0.0000" X="8.131109360936E+02" Y="6.806018226823E+02" Z="1.198202769147E+07" />
+    <GCP Id="" Pixel="-769913.1536" Line="0.0000" X="7.603683618362E+02" Y="6.273455220522E+02" Z="1.198202771347E+07" />
+    <GCP Id="" Pixel="-769912.1536" Line="0.0000" X="7.319421692169E+02" Y="5.871036228623E+02" Z="1.198202773547E+07" />
+  </GCPList>
+  <PAMRasterBand band="1">
+    <Metadata domain="IMAGE_STRUCTURE">
+      <MDI key="COMPRESSION">JPEG</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>

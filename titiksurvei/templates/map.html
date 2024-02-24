@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Titik Survei Kondisi Jalan</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'map.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/leaflet/dist/leaflet.css"
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet/dist/leaflet.js"
+      crossorigin=""
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.js"></script>
+    
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([-3, 118],5);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '<a href="https://www.openstreetmap.org/copyright/" target="_blank">&copy; MapTiler</a>'
+        }).addTo(map);
+
+        // Function to define popup content
+        var staticUrl = "{% static '' %}";
+        function onEachFeature(feature, layer) {
+            // Log the feature properties to the console for debugging
+            console.log("Feature properties:", feature.properties);
+
+            if (feature.properties && feature.properties.survey_name) {
+                // Construct the full URL for the image
+                // var imageUrl = staticUrl + 'images/' + feature.properties.frame_filename;
+                // Construct the URL for the new page with the image
+                var imagePageUrl = 'http://localhost:8000/titiksurvei/display_image/' + feature.properties.frame_filename;
+
+                // Create an HTML string for the popup content
+                var popupContent = '<div class="popup-content">' +
+                           '<p><b>Nama Survei: </b>' + feature.properties.survey_name + '<br>' +
+                           '<b>ID_Titik: </b>' + feature.properties.id_survei + '<br>' +
+                           '<b>Latitude: </b>' + feature.properties.latitude + '<br>' +
+                           '<b>Longitude: </b>' + feature.properties.longitude + '<br>' +
+                           '<b>Foto Survei: </b><a href="' + imagePageUrl + '" target="_blank">Lihat & Proses</a></p>' +
+                           '</div>';
+
+                //layer.bindPopup(feature.properties.survey_name + feature.properties.id_survei);
+                // Bind the HTML content to the popup
+                layer.bindPopup(popupContent);
+            } else {
+              console.log("No 'survey_name' property found for this feature");
+            }
+        }
+
+        var geojsonMarkerOptions = {
+            radius: 2,
+            fillColor: "#FF0000",
+            color: "#000",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.8
+        };
+
+        // Load GeoJSON via AJAX and add to the map
+        var surveigeojson = new L.GeoJSON.AJAX(['http://localhost:8000/api/survei/?format=json'], {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            },
+            onEachFeature: onEachFeature
+        }).addTo(map);
+
+        // Fit map bounds once the GeoJSON data is loaded
+        surveigeojson.on('data:loaded', function() {
+            map.fitBounds(surveigeojson.getBounds());
+        });
+    </script>
+  </body>
+</html>
